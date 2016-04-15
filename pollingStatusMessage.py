@@ -13,8 +13,8 @@ except socket.error:
     sys.exit()
      
 #print 'Socket Created'
- 
-host = '192.168.86.194';
+# to find your ip run nmap -p 2081 192.168.x.x-255 or something simular  
+host = '192.168.x.x';
 port = 2081;
 statusMessageType = {
 	'0x4' : "Filter, No carafe",
