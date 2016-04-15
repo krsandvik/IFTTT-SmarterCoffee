@@ -5,43 +5,27 @@ var request = require('request');
 var app = express();
 app.use(require('morgan')('dev'));
 
-// 1-12
-app.post('/cups/:cups', (req, res) => {
-  spawn('python',["sendcommand.py", "-f", "4", "-c", req.params.cups]);
-  res.json({'cups': req.params.cups});
-});
-
-// 1-3
-app.post('/strength/:strength', (req, res) => {
-  spawn('python',["sendcommand.py", "-f", "5", "-s", req.params.strength]);
-  res.json({'strength': req.params.strength});
-});
-
-// minutes, >5
-app.post('/hotplate/:hotplate', (req, res) => {
-  spawn('python',["sendcommand.py", "-f", "5", "-s", req.params.hotplate]);
-  res.json({'hotplate': req.params.hotplate});
-});
-
-// 0 = grinder; 1 = filter
-app.post('/grinder/:grinder', (req, res) => {
-  spawn('python',["sendcommand.py", "-f", "6", "-g", req.params.grinder]);
-  res.json({'grinder': req.params.grinder});
-});
-
-app.post('/brew', (req, res) => {
-  const result =  spawn('python',["sendcommand.py", "-f", "2"]);
-  result.stdout.on('data', (data) => {
-    res.type('application/json');
-    res.send(data);
-  });
-});
-
+/*
+Explanation of parameters:
+-f F        Which function to call, 1 = startbrew whit options -c -g -m -s,
+              2 = startbrew whit settings already on brewer, 3 = start
+              hotplate whit option -m, 4 = set cups whit option -c, 5 = set
+              strength whit option -2, 6 = defin grinder or filter whit option
+              -g
+  -c C        Define how many cups that will be brewed choose between 1 - 12
+  -g G        Define is grinder or filter should be used. 1 for grinder, 0 for
+              filter
+  -m M        Define how many minutes hot plate should be on. define in minutes
+              minimum 5
+  -s S        Define whick strenght it should be. choose between 1 - 3
+*/
+// Get status from coffee machine 
 app.get('/status', (req, res) => {
   getStatus(res, data => res.json(data));
 });
-
-
+// NOTE: For me 2 smarter coffee cups is 1 normal cup
+// Brew 2 cups -f, 1 = startbrew whit options, -c, 2 = defines 2 cups, -g, 1 = defines grinder, -m, 15 = hotplate on 15 minutes, -s strenght strong  
+// "make1cupsofcoffee" is the the end of your url http://YourPublicIP:3000/make1cupsofcoffee 
 app.post('/make1cupsofcoffee', (req, res) => {
   const result =  spawn('python',["sendcommand.py", "-f", "1", "-c", "2", "-g", "1", "-m", "15", "-s", "3"]);
   result.stdout.on('data', (data) => {
@@ -50,6 +34,7 @@ app.post('/make1cupsofcoffee', (req, res) => {
   });
 });
 
+// Makes 2 cups of coffee. Grinder, 15 min hotplate, strong 
 app.post('/make2cupsofcoffee', (req, res) => {
   const result =  spawn('python',["sendcommand.py", "-f", "1", "-c", "4", "-g", "1", "-m", "15", "-s", "3"]);
   result.stdout.on('data', (data) => {
@@ -58,6 +43,7 @@ app.post('/make2cupsofcoffee', (req, res) => {
   });
 });
 
+// Makes 3 cups of coffee. Grinder, 15 min hotplate, strong 
 app.post('/make3cupsofcoffee', (req, res) => {
   const result =  spawn('python',["sendcommand.py", "-f", "1", "-c", "6", "-g", "1", "-m", "15", "-s", "3"]);
   result.stdout.on('data', (data) => {
@@ -66,6 +52,7 @@ app.post('/make3cupsofcoffee', (req, res) => {
   });
 });
 
+// Makes 4 cups of coffee. Grinder, 15 min hotplate, strong 
 app.post('/make4cupsofcoffee', (req, res) => {
   const result =  spawn('python',["sendcommand.py", "-f", "1", "-c", "8", "-g", "1", "-m", "15", "-s", "3"]);
   result.stdout.on('data', (data) => {
@@ -74,6 +61,7 @@ app.post('/make4cupsofcoffee', (req, res) => {
   });
 });
 
+//The rest of the status function 
 function getStatus(res, successCallback) {
   const status = spawn('python',["pollingStatusMessage.py"]);
   status.stdout.setEncoding("utf8");
@@ -90,6 +78,7 @@ function getStatus(res, successCallback) {
  });
 }
 
+//This is the port you need to forward to your server 
 app.listen(3000, () => {
   console.log('listening on port 3000');
 });
