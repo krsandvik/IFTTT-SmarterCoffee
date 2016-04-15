@@ -13,7 +13,7 @@ except socket.error:
      
 print "Socket Created"
  
-host = "192.168.86.194" #Set ip for coffe brewer
+host = "192.168.X.X" #Set ip for coffe brewer
 port = 2081
 buffer = 20
 
