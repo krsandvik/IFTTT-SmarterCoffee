@@ -22,9 +22,9 @@ Working with firmware 20
 
  1. Clone the repository: 
 
-      git clone https://github.com/krsandvik/IFTTT-SmarterCoffee
-      cd IFTTT-SmarterCoffee 
-      apt-get install git (if git is not installed) 
+      `git clone https://github.com/krsandvik/IFTTT-SmarterCoffee`
+      `cd IFTTT-SmarterCoffee` 
+      `apt-get install git` (if git is not installed) 
 
  2. Find your IP for your coffee machine, You can logon to your router
     and check your DHCP lease for something like *ESP_F211F* or use `nmap -p 2081 192.168.x.x-255`
@@ -33,8 +33,8 @@ Working with firmware 20
  5. Run`python pollingStatusMessage.py` the respons should be something like this:
   
 
-      {"cups": 2, "status": "Grinder, OK to start", "water" : "Half",
-        "strength" : 2}
+      `{"cups": 2, "status": "Grinder, OK to start", "water" : "Half",
+        "strength" : 2}`
 
  6. Configure node and npm: 
 
@@ -43,6 +43,7 @@ Working with firmware 20
  `sudo apt-get install npm`
 
  `sudo ln -s /usr/bin/nodejs /usr/bin/node`
+	
 	Verify install:  
 
  `node -v` 
@@ -58,7 +59,7 @@ Working with firmware 20
  8. run `sudo node app.js` and see if it starts response should be `"listening on port 3000"` 
  8. Configure node to run on startup 
 
-     sudo mv smartercoffee_startconfig /etc/init.d/smartercoffee
+     `sudo mv smartercoffee_startconfig /etc/init.d/smartercoffee`
 
  change the paths in */etc/init.d/smartercoffee* to your where your config are. Reboot to check that app.js has started `ps -aux | grep app.js`
  
@@ -68,8 +69,8 @@ Working with firmware 20
 	Type: GET 
 	Response should be 
 	
-	  {"cups": 2, "status": "Grinder, OK to start", "water" : "Half",
-	    "strength" : 2}
+	  `{"cups": 2, "status": "Grinder, OK to start", "water" : "Half",
+	    "strength" : 2}`
 
  
  
