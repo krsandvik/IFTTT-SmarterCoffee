@@ -1,0 +1,4 @@
+#! /bin/sh
+cd /home/pi/smarter-coffee/server/
+node app.js >> /home/pi/smarter-coffee.log 2>&1
+exit 0
