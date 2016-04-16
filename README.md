@@ -2,11 +2,11 @@
 
 This is an unofficial method to add IFTTT support for your Smarter Coffee 
 
-https://youtu.be/xBiNRYtx880 ![enter image description here](https://youtu.be/xBiNRYtx880)
+**Demo:** https://youtu.be/xBiNRYtx880
 
 Working with firmware 20 
 
-What you need: 
+**What you need:** 
 
  - Smarter Coffee Machine - http://smarter.am/coffee/  
  - A server to run node and python script. (I use a raspberry pi) 
