@@ -38,18 +38,18 @@ Working with firmware 20
 
  6. Configure node and npm: 
 
- sudo apt-get install nodejs
+ `sudo apt-get install nodejs`
 
- sudo apt-get install npm 
+ `sudo apt-get install npm`
 
- sudo ln -s /usr/bin/nodejs /usr/bin/node
+ `sudo ln -s /usr/bin/nodejs /usr/bin/node`
 	Verify install:  
 
- node -v 
+ `node -v` 
 
 	 v4.2.1
 
- npm -v 
+ `npm -v` 
 
      2.14.7
 
