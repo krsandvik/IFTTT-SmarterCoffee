@@ -38,16 +38,19 @@ Working with firmware 20
 
  6. Configure node and npm: 
 
-	 sudo apt-get install nodejs
-     sudo apt-get install npm 
-     sudo ln -s /usr/bin/nodejs /usr/bin/node
+ sudo apt-get install nodejs
 
+ sudo apt-get install npm 
+
+ sudo ln -s /usr/bin/nodejs /usr/bin/node
 	Verify install:  
 
-	 node -v 
+ node -v 
+
 	 v4.2.1
 
-	 npm -v 
+ npm -v 
+
      2.14.7
 
  
@@ -91,6 +94,11 @@ Working with firmware 20
  3. Then you can configure your custom push service on IFTTT to send you status on your coffee machine 
 
 Thanks to nanab for the python script https://github.com/nanab/smartercoffee
+
+
+
+
+
 
 
 
