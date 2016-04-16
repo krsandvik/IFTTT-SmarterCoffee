@@ -23,7 +23,9 @@ Working with firmware 20
  1. Clone the repository: 
 
       `git clone https://github.com/krsandvik/IFTTT-SmarterCoffee`
+      
       `cd IFTTT-SmarterCoffee` 
+      
       `apt-get install git` (if git is not installed) 
 
  2. Find your IP for your coffee machine, You can logon to your router
@@ -58,12 +60,13 @@ Working with firmware 20
 
  
  7. Run `sudo npm install` in where your app.js file is.
- 8. run `sudo node app.js` and see if it starts response should be `"listening on port 3000"` 
+ 8. Run `sudo node app.js` and see if it starts response should be `"listening on port 3000"` 
  8. Configure node to run on startup 
 
      `sudo mv smartercoffee_startconfig /etc/init.d/smartercoffee`
 
- change the paths in */etc/init.d/smartercoffee* to your where your config are. Reboot to check that app.js has started `ps -aux | grep app.js`
+ change the paths in `/etc/init.d/smartercoffee` to your where your config are. Reboot to check that app.js has started 
+ `ps -aux | grep app.js`
  `
 **How to connect IFTTT**
 
