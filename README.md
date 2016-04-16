@@ -38,45 +38,36 @@ Working with firmware 20
 
  6. Configure node and npm: 
 
- `sudo apt-get install nodejs`
-
- `sudo apt-get install npm`
-
- `sudo ln -s /usr/bin/nodejs /usr/bin/node`
+	`curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -`
 	
-	Verify install:  
-
- `node -v` 
-
-	 v4.2.1
-
- `npm -v` 
-
-     2.14.7
+	`sudo apt-get install -y nodejs`
+	 
+	`sudo apt-get install nodejs`
+	
+	`sudo apt-get install npm`
+		
+		Verify install:  
+	
+	 `node -v` 
+	
+		 v5.10.1
+	
+	 `npm -v` 
+	
+		 3.8.3
 
  
- 7.  Run *sudo npm install* in where your app.js file is.
+ 7. Run `sudo npm install` in where your app.js file is.
  8. run `sudo node app.js` and see if it starts response should be `"listening on port 3000"` 
  8. Configure node to run on startup 
 
      `sudo mv smartercoffee_startconfig /etc/init.d/smartercoffee`
 
  change the paths in */etc/init.d/smartercoffee* to your where your config are. Reboot to check that app.js has started `ps -aux | grep app.js`
- 
- 8. Test with postman if your node server works https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm 
-
-	URL: yourip:3000/status 
-	Type: GET 
-	Response should be 
-	
-	  `{"cups": 2, "status": "Grinder, OK to start", "water" : "Half",
-	    "strength" : 2}`
-
- 
- 
+ `
 **How to connect IFTTT**
 
- 1. Port forward  port 3000 to your coffee machine 
+ 1. Port forward port 3000 to your coffee machine 
  2. Connect https://ifttt.com/amazon_alexa to your IFTTT account 
  In "What phrase?" you can put in whatever you want Alexa want to respond to. **Note:** you need to say **alexa trigger four cups of coffee**
  
@@ -88,11 +79,18 @@ Working with firmware 20
  
 
  **Configure get status** 
- 
 
  1. Get your maker key from https://ifttt.com/maker ![enter image description here](https://lh3.googleusercontent.com/70CAG8qZdisw5GCUs3EMekkqwugOjab8JMTa5lUbYytroAy1tjXQHHq6NMXvxz6P2QP4cw=s0 "Screen Shot 2016-04-16 at 12.53.54.png")
  2. Add your key her in app.js "https://maker.ifttt.com/trigger/status/with/key/
  3. Then you can configure your custom push service on IFTTT to send you status on your coffee machine 
+ 4. Test your api  with postman https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm 
+
+	URL: yourip:3000/status 
+	Type: GET 
+	Response should be :
+	
+	  `{"cups": 2, "status": "Grinder, OK to start", "water" : "Half",
+	    "strength" : 2}
 
 Thanks to nanab for the python script https://github.com/nanab/smartercoffee
 
