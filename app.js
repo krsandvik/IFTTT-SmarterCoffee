@@ -67,7 +67,7 @@ function getStatus(res, successCallback) {
   status.stdout.setEncoding("utf8");
   status.stdout.on('data', statusData => {
     console.log('Received status from coffee maker');
-    request("https://maker.ifttt.com/trigger/status/with/key/2rVVw18PCVkmhyzDGX1YX", { form: { value1: statusData } }, function(error, response, body) {
+    request("https://maker.ifttt.com/trigger/status/with/key/XXXXXXXXXX", { form: { value1: statusData } }, function(error, response, body) {
       if (error) {
         console.log('Unable to send request to IFTTT', error);
         res.status(500).end();
