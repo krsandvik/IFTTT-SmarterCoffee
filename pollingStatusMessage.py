@@ -107,6 +107,7 @@ cupsMessageType = {
 	'0xa' : "10",
 	'0xb' : "11",
 	'0xc' : "12",
+	'0x44': "4",
 } 
 
 #Connect to remote server
