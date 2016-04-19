@@ -58,7 +58,7 @@ Working with firmware 20
 	
 		 3.8.3
 
- 
+ 	If you got problem install node check out: http://www.schrankmonster.de/2014/03/22/install-nodejs-npm-raspberrypi-illegal-instruction-error-messages/ 
  7. Run `sudo npm install` in where your app.js file is.
  8. Run `sudo node app.js` and see if it starts response should be `"listening on port 3000"` 
  8. Configure node to run on startup 
